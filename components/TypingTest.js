@@ -27,7 +27,6 @@ const TypingTest = () => {
         .then(response => response.json())
         .then(data => setRandomWords(data))
         .then(setIsReady(true));
-
     }
 
     const getNewWord = () => {
