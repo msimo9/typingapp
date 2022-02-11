@@ -5,6 +5,9 @@ import { useFonts, RobotoMono_100Thin } from '@expo-google-fonts/roboto-mono';
 import keyListener from '../hooks/keyListener';
 import Information from './Information';
 import ToggleModalButton from './ToggleModalButton';
+import Finished from './Finished';
+
+import {useSelector} from 'react-redux'
 
 const TypingTest = () => {
     let initalArr = [''];
@@ -17,13 +20,19 @@ const TypingTest = () => {
     const [hasStarted, setHasStarted] = useState(false);
 
     const [currentChar, setCurrentChar] = useState('');
-
     const [errors, setErrors] = useState(0);
     const [wpm, setWpm] = useState(0);
     const [typedWords, setTypedWords] = useState(0);
 
+    const [hasFinished, setHasFinished] = useState(false);
+
+    const numberOfWords = useSelector(state => state.sliderValue);
+    const language = useSelector(state => state.language);
+    const fetchString = "https://random-word-api.herokuapp.com/word?number="+numberOfWords+"&lang="+language;
+    console.log(numberOfWords);
+
     const getData = () => {
-        fetch('https://random-word-api.herokuapp.com/word?number=100')
+        fetch(fetchString)
         .then(response => response.json())
         .then(data => setRandomWords(data))
         .then(setIsReady(true));
@@ -43,7 +52,7 @@ const TypingTest = () => {
 
     useEffect(() => {
         getData();
-    }, [])
+    }, [numberOfWords, hasFinished, language]);
 
     useEffect(() => {
         let interval;
@@ -80,11 +89,18 @@ const TypingTest = () => {
     }, [fontsLoaded, isReady, currentChar, randomWords]);
 
     keyListener(key => {
+
+        if(key === " "){
+            getData();
+            setHasFinished(false);
+        }
+
         if(key == "Backspace"){
             setText(text.slice(0, -1));
         }else{
             setText(text+key);
         }
+        console.log(key);
         if(currentChar == key && key!=" " && randomWords.length != 0){
             setHasStarted(true);
             randomWords[0] = randomWords[0].substring(1);
@@ -93,7 +109,7 @@ const TypingTest = () => {
                 randomWords.shift()
                 getNewWord();
                 if(randomWords.length == 0){
-                    getData();
+                    setHasFinished(true);
                 }
                 getCurrentChar();
             }else{
@@ -103,12 +119,12 @@ const TypingTest = () => {
             setErrors(errors => errors + 1);
         }
     });
-
+    if(!hasFinished){
     return (
         <View
         
             style={styles.container}
-        >
+        >   
             <Information errors={errors} wpm={wpm}/>
             <View style={styles.wordsContainer}>
                 {randomWords.slice(0, 15).map((item, index) => {
@@ -137,9 +153,14 @@ const TypingTest = () => {
                 })}
             </View>
             
-            <ToggleModalButton />
+            <ToggleModalButton style={{zIndex: 99}}/>
         </View>
     );
+    }else{
+        return(
+            <Finished />
+        );
+    }
 }
 
 const styles = StyleSheet.create({

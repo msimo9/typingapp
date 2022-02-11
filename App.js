@@ -2,10 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TypingTest from './components/TypingTest';
+import store from './redux/redux';
+import { Provider } from 'react-redux';
 
 export default function App() {
   return (
-    <TypingTest />
+    <Provider store={store}>
+      <TypingTest />
+    </Provider>
   );
 }
 
