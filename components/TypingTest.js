@@ -12,6 +12,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { changeWpm, incrementErrors } from '../redux/redux';
 
 const TypingTest = () => {
+    console.log("Welcome to my typing app");
     let initalArr = [''];
     const [text, setText] = useState('');
     const [randomWords, setRandomWords] = useState(initalArr);
@@ -47,6 +48,7 @@ const TypingTest = () => {
 
     const getCurrentChar = () => {
         setCurrentChar(randomWords[0].charAt(0));
+        
     }
 
     let [fontsLoaded] = useFonts({
