@@ -1,0 +1,35 @@
+{
+  "files": {
+    "app.js": "/static/js/app.e8a37a0d.chunk.js",
+    "app.js.map": "/static/js/app.e8a37a0d.chunk.js.map",
+    "runtime~app.js": "/static/js/runtime~app.2e9f1821.js",
+    "runtime~app.js.map": "/static/js/runtime~app.2e9f1821.js.map",
+    "static/js/2.ae53a60b.chunk.js": "/static/js/2.ae53a60b.chunk.js",
+    "static/js/2.ae53a60b.chunk.js.map": "/static/js/2.ae53a60b.chunk.js.map",
+    "fonts/Ionicons.ttf": "/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/RobotoMono_100Thin.ttf": "/./fonts/RobotoMono_100Thin.ttf",
+    "fonts/RobotoMono_100Thin_Italic.ttf": "/./fonts/RobotoMono_100Thin_Italic.ttf",
+    "fonts/RobotoMono_200ExtraLight.ttf": "/./fonts/RobotoMono_200ExtraLight.ttf",
+    "fonts/RobotoMono_200ExtraLight_Italic.ttf": "/./fonts/RobotoMono_200ExtraLight_Italic.ttf",
+    "fonts/RobotoMono_300Light.ttf": "/./fonts/RobotoMono_300Light.ttf",
+    "fonts/RobotoMono_300Light_Italic.ttf": "/./fonts/RobotoMono_300Light_Italic.ttf",
+    "fonts/RobotoMono_400Regular.ttf": "/./fonts/RobotoMono_400Regular.ttf",
+    "fonts/RobotoMono_400Regular_Italic.ttf": "/./fonts/RobotoMono_400Regular_Italic.ttf",
+    "fonts/RobotoMono_500Medium.ttf": "/./fonts/RobotoMono_500Medium.ttf",
+    "fonts/RobotoMono_500Medium_Italic.ttf": "/./fonts/RobotoMono_500Medium_Italic.ttf",
+    "fonts/RobotoMono_600SemiBold.ttf": "/./fonts/RobotoMono_600SemiBold.ttf",
+    "fonts/RobotoMono_600SemiBold_Italic.ttf": "/./fonts/RobotoMono_600SemiBold_Italic.ttf",
+    "fonts/RobotoMono_700Bold.ttf": "/./fonts/RobotoMono_700Bold.ttf",
+    "fonts/RobotoMono_700Bold_Italic.ttf": "/./fonts/RobotoMono_700Bold_Italic.ttf",
+    "index.html": "/index.html",
+    "manifest.json": "/manifest.json",
+    "serve.json": "/serve.json",
+    "static/js/2.ae53a60b.chunk.js.LICENSE.txt": "/static/js/2.ae53a60b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.2e9f1821.js",
+    "static/js/2.ae53a60b.chunk.js",
+    "static/js/app.e8a37a0d.chunk.js"
+  ]
+}

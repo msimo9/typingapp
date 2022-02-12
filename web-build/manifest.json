@@ -1,0 +1,7 @@
+{
+  "display": "standalone",
+  "lang": "en",
+  "name": "typingapp",
+  "short_name": "typingapp",
+  "start_url": "/?utm_source=web_app_manifest"
+}
