@@ -45,10 +45,6 @@ const TypingTest = () => {
         .then(setIsReady(true));
     }
 
-    const getNewWord = () => {
-
-    }
-
     const getCurrentChar = () => {
         setCurrentChar(randomWords[0].charAt(0));
     }
@@ -59,7 +55,7 @@ const TypingTest = () => {
 
     useEffect(() => {
         getData();
-    }, [numberOfWords, hasFinished, language]);
+    }, [numberOfWords, hasFinished, language, hasStarted, initialTimerValue]);
 
     useEffect(() => {
         let interval;
@@ -118,8 +114,9 @@ const TypingTest = () => {
     keyListener(key => {
 
         if(key === " "){
-            getData();
             setHasFinished(false);
+            setHasStarted(false);
+            //getData();
             setCountdownTimer(initialTimerValue);
         }
 
