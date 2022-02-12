@@ -138,7 +138,7 @@ const TypingTest = () => {
                 if(randomWords.length == 0){
                     setHasFinished(true);
                 }
-                getCurrentChar();
+                //getCurrentChar();
             }else{
                 getCurrentChar();
             }
