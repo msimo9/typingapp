@@ -12,7 +12,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import { changeWpm, incrementErrors } from '../redux/redux';
 
 const TypingTest = () => {
-    console.log("Welcome to my typing app");
     let initalArr = [''];
     const [text, setText] = useState('');
     const [randomWords, setRandomWords] = useState(initalArr);
@@ -35,7 +34,6 @@ const TypingTest = () => {
     const numberOfWords = useSelector(state => state.sliderValue);
     const language = useSelector(state => state.language);
     const fetchString = "https://random-word-api.herokuapp.com/word?number="+numberOfWords+"&lang="+language;
-    console.log(numberOfWords);
 
     const dispatch = useDispatch()
 
@@ -47,7 +45,10 @@ const TypingTest = () => {
     }
 
     const getCurrentChar = () => {
+        
+        console.log("current char in getCurrentChar(): ",randomWords[0].charAt(0))
         setCurrentChar(randomWords[0].charAt(0));
+
         
     }
 
@@ -57,7 +58,7 @@ const TypingTest = () => {
 
     useEffect(() => {
         getData();
-    }, [numberOfWords, hasFinished, language, hasStarted, initialTimerValue]);
+    }, [numberOfWords, hasFinished, language, initialTimerValue]);
 
     useEffect(() => {
         let interval;
@@ -76,7 +77,6 @@ const TypingTest = () => {
         if(hasStarted){
             interval2 = setInterval(() => {
                 setTotalCounter(totalCounter => totalCounter+1);
-                console.log(totalCounter);
                 if(totalCounter > 3 && !hasFinished){
                     let tempWpm = Math.floor(typedWords/(totalCounter/60));
                     setWpm(tempWpm);
@@ -111,10 +111,9 @@ const TypingTest = () => {
 
         getCurrentChar();
         
-    }, [fontsLoaded, isReady, currentChar, randomWords]);
+    }, [fontsLoaded, isReady, randomWords, currentChar]);
 
     keyListener(key => {
-
         if(key === " "){
             setHasFinished(false);
             setHasStarted(false);
@@ -134,18 +133,16 @@ const TypingTest = () => {
             if(randomWords[0].length == 0){
                 setTypedWords(typedWords => typedWords+1);
                 randomWords.shift()
-                getNewWord();
+                //getNewWord();
                 if(randomWords.length == 0){
                     setHasFinished(true);
                 }
-                //getCurrentChar();
-            }else{
-                getCurrentChar();
             }
         }else if(key != " "){
             setErrors(errors => errors + 1);
             dispatch(incrementErrors());
         }
+        getCurrentChar();
     });
     if(!hasFinished){
     return (
